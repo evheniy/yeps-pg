@@ -27,6 +27,16 @@ YEPS PostgreSQL client
     
 ## How to use
 
+### Docker
+
+If you use docker you can start PostgreSQL:
+
+    npm run test:db:start
+    
+And stop it:
+
+    npm run test:db:stop
+
 ### Config
 
 config/default.json
