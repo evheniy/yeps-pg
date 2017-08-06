@@ -1,6 +1,6 @@
 {
   "name": "yeps-pg",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "YEPS PostgreSQL client",
   "main": "index.js",
   "scripts": {
