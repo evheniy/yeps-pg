@@ -67,7 +67,7 @@ config/default.json
     ]);
     
     app.then(async ctx => {
-        const rows = await ctx.pg.query('SELECT * FROM users;');
+        const result = await ctx.pg.query('SELECT * FROM users;');
     });
     
 And with connection:
@@ -98,7 +98,7 @@ And with connection:
     
     async () => {
         try {
-            const rows = await pool.query('SELECT * FROM users;');
+            const result = await pool.query('SELECT * FROM users;');
         } catch (error) {
             logger.error(error);
         }
@@ -149,6 +149,32 @@ And with connection:
             client.release();
         }
     });
+    
+In module:
+
+    const pool = require('yeps-pg/pool');
+    const logger = require('yeps-logger/logger');
+    
+    async () => {
+    
+        const client = await pool.connect();
+    
+        try {
+            
+            await client.query('BEGIN');
+            await client.query('DELETE FROM users;');
+            await client.query('BEGIN');
+
+        } catch (error) {
+        
+            logger.error(error);
+            await client.query('ROLLBACK');
+            
+        } finally {
+        
+            client.release();
+        }
+    };
     
 ## Links
 
