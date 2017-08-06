@@ -1,0 +1,16 @@
+sudo: required
+language: node_js
+node_js:
+  - "7"
+  - "8"
+services:
+  - docker
+before_install:
+  - npm install
+script:
+  - docker version
+  - node --version
+  - npm --version
+  - npm run lint
+  - npm run test
+  - npm run report
