@@ -156,22 +156,16 @@ In module:
     const logger = require('yeps-logger/logger');
     
     async () => {
-    
         const client = await pool.connect();
     
         try {
-            
             await client.query('BEGIN');
             await client.query('DELETE FROM users;');
             await client.query('BEGIN');
-
         } catch (error) {
-        
             logger.error(error);
             await client.query('ROLLBACK');
-            
         } finally {
-        
             client.release();
         }
     };
