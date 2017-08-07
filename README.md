@@ -142,7 +142,7 @@ And with connection:
         try {
             await client.query('BEGIN');
             await client.query('DELETE FROM users;');
-            await client.query('BEGIN');
+            await client.query('COMMIT');
         } catch (e) {
             await client.query('ROLLBACK');
         } finally {
@@ -161,7 +161,7 @@ In module:
         try {
             await client.query('BEGIN');
             await client.query('DELETE FROM users;');
-            await client.query('BEGIN');
+            await client.query('COMMIT');
         } catch (error) {
             logger.error(error);
             await client.query('ROLLBACK');
