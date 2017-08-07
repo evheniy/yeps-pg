@@ -223,7 +223,7 @@ describe('YEPS pg test', () => {
     try {
       await client.query('BEGIN');
       await client.query('SELECT 1+1 AS res;');
-      await client.query('BEGIN');
+      await client.query('COMMIT');
       isTestFinished1 = true;
     } catch (e) {
       await client.query('ROLLBACK');
@@ -245,7 +245,7 @@ describe('YEPS pg test', () => {
     try {
       await client.query('BEGIN');
       await client.query('DELETE FROM users;');
-      await client.query('BEGIN');
+      await client.query('COMMIT');
       isTestFinished1 = true;
     } catch (e) {
       await client.query('ROLLBACK');
