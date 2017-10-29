@@ -61,9 +61,9 @@ config/default.json
     const pg = require('yeps-pg');
     
     app.all([
-        pg(),
         error(),
-        logger()
+        logger(),
+        pg(),
     ]);
     
     app.then(async ctx => {
@@ -80,9 +80,9 @@ And with connection:
     const pg = require('yeps-pg');
     
     app.all([
-        pg(),
         error(),
-        logger()
+        logger(),
+        pg(),
     ]);
     
     app.then(async ctx => {
@@ -111,11 +111,9 @@ And with connection:
     
     async () => {
         try {
-            
             const client = await ctx.pg.connect();
             const result = await client.query('SELECT * FROM users;');
             client.release();
-
         } catch (error) {
             logger.error(error);
         }
@@ -131,9 +129,9 @@ And with connection:
     const pg = require('yeps-pg');
     
     app.all([
-        pg(),
         error(),
-        logger()
+        logger(),
+        pg(),
     ]);
     
     app.then(async ctx => {
@@ -170,8 +168,10 @@ In module:
         }
     };
     
-## Links
+#### [YEPS documentation](http://yeps.info/)
 
-* [YEPS documentation](http://yeps.info/)
+
+#### Dependencies:
+
 * [node-postgres](https://node-postgres.com/) - PostgreSQL node client
 * [config](https://github.com/lorenwest/node-config) - node.js config

@@ -7,7 +7,7 @@ const Router = require('yeps-router');
 const pg = require('..');
 const pool = require('../pool');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 let app;
